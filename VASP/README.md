@@ -81,6 +81,7 @@ Submit all calculations using: `bash ./raman_sub.sh`. Three folders will be crea
 
 After all calculations are done, it may be a good idea to save OUTCAR files from all the `OUTCAR_*` folders for the future reference. Also, `vasp_raman.dat` will contain Raman activities for the future processing (for example with `broaden.py`).
 
-# Contributors
+## Contributors
 
-Test
+Alexandr Fonari (Georgia Tech, PIs: J.-L. Bredas/V. Coropceanu): Email.
+Shannon Stauffer (UT Austin, PI: G. Henkelman): Email.
