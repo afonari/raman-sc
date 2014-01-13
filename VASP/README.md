@@ -83,5 +83,5 @@ After all calculations are done, it may be a good idea to save OUTCAR files from
 
 ## Contributors
 
-Alexandr Fonari (Georgia Tech, PIs: J.-L. Bredas/V. Coropceanu): Email.
+Alexandr Fonari (Georgia Tech, PIs: J.-L. Bredas/V. Coropceanu): Email.  
 Shannon Stauffer (UT Austin, PI: G. Henkelman): Email.
