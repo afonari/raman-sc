@@ -122,5 +122,5 @@ Enjoy your Raman spectrum in `Raman.ps`!
 
 ## Contributors
 
-Alexandr Fonari (Georgia Tech, PIs: J.-L. Bredas/V. Coropceanu): Email  
-Shannon Stauffer (UT Austin, PI: G. Henkelman): Email.
+Alexandr Fonari (Georgia Tech, PIs: J.-L. Bredas/V. Coropceanu): [Email](mailto:alexandr.fonari[nospam]gatech.edu)  
+Shannon Stauffer (UT Austin, PI: G. Henkelman): [Email](stauffers[nospam]utexas.edu).
