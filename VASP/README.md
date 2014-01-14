@@ -83,7 +83,29 @@ python27 vasp_raman.py > vasp_raman.out
 
 Submit all calculations using: `bash ./raman_sub.sh`. Three folders will be created where calculations will run: `Modes_01_10_2_0.01`, `Modes_11_20_2_0.01` and `Modes_21_29_2_0.01`.
 
-After all calculations are done, it may be a good idea to save OUTCAR files from all the `OUTCAR_*` folders for the future reference. Also, `vasp_raman.dat` will contain Raman activities for the future processing (for example with `broaden.py`).
+After all calculations are done, it may be a good idea to save OUTCAR files from all the `OUTCAR.*` folders for the future reference. Also, `vasp_raman.dat` will contain Raman activities for the future processing (for example with `broaden.py`).
+
+This script will gather all `OUTCAR.*` files in a back up folder, and also concatenate all `vasp_raman.dat` files in one:
+```bash
+#!/bin/bash
+
+backup_dir="Raman_Backup"
+
+rm -f vasp_raman.dat
+rm -f vasp_raman.tmp
+
+mkdir -p ${backup_dir}
+
+for dir in ./Modes*
+do
+    cat ${dir}/vasp_raman.dat >> vasp_raman.tmp
+    cp ${dir}/OUTCAR.* ${backup_dir}
+done
+
+head -n 1 vasp_raman.tmp > vasp_raman.dat
+sed '/^#/d' vasp_raman.tmp >> vasp_raman.dat
+rm -f vasp_raman.tmp
+```
 
 ## Contributors
 
