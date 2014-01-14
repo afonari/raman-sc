@@ -1,8 +1,14 @@
-## Cyclopentadiene example: Split modes
+## Cyclopentadiene example
 
 Cyclopentadiene molecule has 11 atoms: C5H6. Thus, there are 33 modes (lowest three acoustic should be close to zero). Note that VASP prints the modes in the *decreasing* eigenvalue (frequency) order. In the current example, the lowest *four* modes are imaginary (probably due to the optimization issues), these will be skipped in the Raman calculation.
 
-The following procedure can be used to obtain Raman activities for the G-point phonons. Change the folder to one containing `POSCAR` and `OUTCAR` from a phonon calculation. `INCAR` should have `NWRITE=3` variable set. The directory should contain:
+The following procedure can be used to obtain Raman activities for the G-point phonons. `POSCAR.phon` and `OUTCAR.phon` from a phonon calculation. `INCAR` should have `NWRITE=3` variable set. The directory should contain:
+
+### Cyclopentadiene example: One calculation
+
+### Cyclopentadiene example: Split modes
+
+Create a directory with the following files:
 ```
 INCAR.raman  - should contain LEPSILON=.TRUE. or LCALCEPS=.TRUE. because we want 'MACROSCOPIC STATIC DIELECTRIC TENSOR' in the OUTCAR
 KPOINTS      - just kpoints
@@ -16,8 +22,6 @@ raman_sub.sh - see below
 Contents of the `raman_sub.sh`:
 ```bash
 #!/bin/bash
-
-DIR=$(pwd)
 
 nderiv_step_size='2_0.01'
 
@@ -83,5 +87,5 @@ After all calculations are done, it may be a good idea to save OUTCAR files from
 
 ## Contributors
 
-Alexandr Fonari (Georgia Tech, PIs: J.-L. Bredas/V. Coropceanu): Email.  
+Alexandr Fonari (Georgia Tech, PIs: J.-L. Bredas/V. Coropceanu): Email  
 Shannon Stauffer (UT Austin, PI: G. Henkelman): Email.
