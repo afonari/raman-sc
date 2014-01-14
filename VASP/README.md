@@ -105,6 +105,7 @@ done
 head -n 1 vasp_raman.tmp > vasp_raman.dat
 sed '/^#/d' vasp_raman.tmp >> vasp_raman.dat
 rm -f vasp_raman.tmp
+
 ```
 
 ## Contributors
