@@ -4,9 +4,11 @@ Cyclopentadiene molecule has 11 atoms: C5H6. Thus, there are 33 modes (lowest th
 
 For this example `vasp_raman.py` script version [**c4c39a60b8110a608246b67828185811c98d8429**](https://raw.github.com/alexandr-fonari/raman-sc/c4c39a60b8110a608246b67828185811c98d8429/VASP/vasp_raman.py) was used.
 
-The following procedure can be used to obtain Raman activities for the G-point phonons. `POSCAR.phon` and `OUTCAR.phon` from a phonon calculation. `INCAR` should have `NWRITE=3` variable set. The directory should contain:
+The following procedure can be used to obtain Raman activities for the G-point phonons. `POSCAR.phon` and `OUTCAR.phon` should come from a phonon calculation. `INCAR` should have `NWRITE=3` variable set.
 
 ### Cyclopentadiene example: One calculation
+
+TODO
 
 ### Cyclopentadiene example: Split modes
 
