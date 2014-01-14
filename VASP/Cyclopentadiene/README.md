@@ -29,7 +29,7 @@ Contents of the `raman_sub.sh`:
 
 nderiv_step_size='2_0.01'
 
-export VASP_RAMAN_RUN='mpirun /opt/VASP/bin/vasp5.2.12_p > job.out'
+export VASP_RAMAN_RUN='aprun -B /u/afonari/vasp.5.3.2/vasp.5.3/vasp &> job.out'
 
 # manually split modes
 Modes[0]='01_10'
@@ -46,12 +46,12 @@ do
     echo "Running VASP in ${FOLDER}"
     #
     if [ -d "${FOLDER}" ]; then
-        cd ${FOLDER}
+        cd "${FOLDER}"
         qsub raman.sub
         cd ..
     else
-        mkdir ${FOLDER}
-        cd ${FOLDER}
+        mkdir "${FOLDER}"
+        cd "${FOLDER}"
         ln -s ../OUTCAR.phon ./OUTCAR.phon
         ln -s ../POSCAR.phon ./POSCAR.phon
         ln -s ../POTCAR ./POTCAR
@@ -62,24 +62,22 @@ do
         cd ..
     fi
 done
+
 ```
 
 Contents of the `raman.sub`:
 ```bash
 #!/bin/bash
+#PBS -l select=1:ncpus=32:mpiprocs=32
+#PBS -l walltime=01:00:00
+#PBS -q debug
 #PBS -j oe
-#PBS -N CPD
-#PBS -l nodes=1:ppn=8
-#PBS -l pmem=1000mb
-#PBS -l walltime=10:00:00
+#PBS -N CPD-RT
 #PBS -V
 
-# environment for the libraries
-# [...]
+cd $PBS_O_WORKDIR
 
-# run the job
-#
-cd ${PBS_O_WORKDIR}
+ulimit -s unlimited  # remove limit on stack size
 
 python27 vasp_raman.py > vasp_raman.out
 
@@ -87,38 +85,41 @@ python27 vasp_raman.py > vasp_raman.out
 
 Submit all calculations using: `bash ./raman_sub.sh`. Three folders will be created where calculations will run: `Modes_01_10_2_0.01`, `Modes_11_20_2_0.01` and `Modes_21_29_2_0.01`.
 
-After all calculations are done, it may be a good idea to save OUTCAR files from all the `OUTCAR.*` folders for the future reference. Also, `vasp_raman.dat` will contain Raman activities for the future processing (for example with `broaden.py`).
+After all calculations are done, it may be a good idea to save all `OUTCAR.*` files from all the `Modes_*` folders for the future reference. Also, `vasp_raman.dat` will contain Raman activities for the future processing (for example with `broaden.py`).
 
 This script will gather all `OUTCAR.*` files in a back up folder, and also concatenate all `vasp_raman.dat` files in one:
 ```bash
 #!/bin/bash
 
 backup_dir="Raman_Backup"
+mkdir -p ${backup_dir}
 
 rm -f vasp_raman.dat
-rm -f vasp_raman.tmp
-
-mkdir -p ${backup_dir}
 
 for dir in ./Modes*
 do
-    cat ${dir}/vasp_raman.dat >> vasp_raman.tmp
-    cp ${dir}/OUTCAR.* ${backup_dir}
+    cat "${dir}"/vasp_raman.dat >> vasp_raman.tmp
+    cp "${dir}"/OUTCAR.* "${backup_dir}"
 done
 
 head -n 1 vasp_raman.tmp > vasp_raman.dat
-sed '/^#/d' vasp_raman.tmp >> vasp_raman.dat
+sed '/^#/d' vasp_raman.tmp > vasp_raman.unsorted
+sort -k 2 -n vasp_raman.unsorted >> vasp_raman.dat
+
 rm -f vasp_raman.tmp
+rm -f vasp_raman.unsorted
 
 ```
 
-Finally, broaden and plot Raman spectrum:
+Finally, broaden and plot Raman spectrum (scripts are in the archive):
 ```bash
 python broaden.py vasp_raman.dat
 bash vasp_raman.gnuplot.sh
 ```
 
 Enjoy your Raman spectrum in `Raman.ps`!
+
+[**Download complete example.**](Cyclopentadiene-Example.tar.gz)
 
 ## Contributors
 
