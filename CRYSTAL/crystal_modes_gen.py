@@ -145,7 +145,7 @@ def get_modes_from_HESSFREQ(hessfreq_fh, nat, masses):
     #
     return freqs, eigvecs
 #
-def dump_OUTCAR_phon(outcar_fh, nat, pos, asym, freqs, eigvecs):
+def dump_OUTCAR_phon(outcar_fh, nat, pos, asym, atom_number, freqs, mode_activity, eigvecs):
     outcar_fh.seek(0) # just in case
     outcar_fh.write("Eigenvectors after division by SQRT(mass)\n")
     outcar_fh.write("\n")
@@ -156,21 +156,25 @@ def dump_OUTCAR_phon(outcar_fh, nat, pos, asym, freqs, eigvecs):
     for i in range(nat*3):
         freq = freqs[i]
         evec = eigvecs[i]
+        active = mode_activity[i]
         #
         outcar_fh.write("\n")
-        outcar_fh.write("%5d  %5.6f cm-1\n" % (i+1, freq))
+        outcar_fh.write("%5d  %5.6f cm-1 %c \n" % (i+1, freq, active))
         outcar_fh.write(" X         Y         Z           dx          dy          dz\n")
         #
         for j in range(nat):
             a = int(asym[j])
-            outcar_fh.write("%10.6f  %10.6f  %10.6f    %10.6f  %10.6f  %10.6f %d\n" % (pos[j][0], pos[j][1], pos[j][1], evec[3*j], evec[3*j+1], evec[3*j+2], a))
-
+            b = atom_number[j]
+            outcar_fh.write("%d %10.6f  %10.6f  %10.6f    %10.6f  %10.6f  %10.6f %d\n" % (b, pos[j][0], pos[j][1], pos[j][1], evec[3*j], evec[3*j+1], evec[3*j+2], a))
+#
 def parse_OUTCAR(outcar_fh):
     import sys
     nat = 0
     masses = []
     asym = []
     pos = []
+    atom_number = []
+    mode_activity = []
     #
     outcar_fh.seek(0) # just in case
     #
@@ -201,6 +205,8 @@ def parse_OUTCAR(outcar_fh):
             #
             for i in range(nat):
                 tmp = outcar_fh.readline().strip().split()
+                #
+                atom_number.append( int(tmp[1]) )
                 pos.append( [ float(tmp[x]) for x in range(3,6) ] )
             #
         if "ATOMS ISOTOPIC MASS (AMU) FOR FREQUENCY CALCULATION" in line:
@@ -216,10 +222,17 @@ def parse_OUTCAR(outcar_fh):
                 tmp = line.strip().split()
                 for i in range(2,len(tmp),3): # fancy way to parse masses
                     masses.append( float(tmp[i]) )
+        #
+        if "MODES         EIGV          FREQUENCIES     IRREP  IR   INTENS    RAMAN" in line:
+            outcar_fh.readline() # (HARTREE**2)   (CM**-1)     (THZ)             (KM/MOL)
+            for i in range(nat*3):
+                tmp = outcar_fh.readline().strip().split()
+                mode_activity.append(tmp[-1])
+
     #
     assert nat == len(masses), "[parse_OUTCAR]: Number of atoms should be equal to the size of the 'masses' array"
     assert nat == len(asym),   "[parse_OUTCAR]: Number of atoms should be equal to the size of the 'asym' array"
-    return nat, masses, asym, pos
+    return nat, masses, asym, atom_number, pos, mode_activity
 #
 if __name__ == '__main__':
     import sys
@@ -236,7 +249,7 @@ if __name__ == '__main__':
         print "[__main__]: ERROR Couldn't open first-argument file: '"+sys.argv[1]+"', exiting...\n"
         sys.exit(1)
     #
-    nat, masses, asym, pos = parse_OUTCAR(outcar_fh)
+    nat, masses, asym, atom_number, pos, mode_activity = parse_OUTCAR(outcar_fh)
     outcar_fh.close()
     #
     try:
@@ -254,7 +267,7 @@ if __name__ == '__main__':
         print "[__main__]: ERROR Couldn't open OUTCAR.phon for writing, exiting...\n"
         sys.exit(1)
     #
-    dump_OUTCAR_phon(outcar_fh, nat, pos, asym, freqs, eigvecs)
+    dump_OUTCAR_phon(outcar_fh, nat, pos, asym, atom_number, freqs, mode_activity, eigvecs)
     outcar_fh.close()
     print "'OUTCAR.phon' generated successfully!"
     print ""

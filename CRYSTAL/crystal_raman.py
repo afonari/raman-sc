@@ -50,10 +50,12 @@ def get_modes_from_OUTCAR(outcar_fh, nat):
     import sys
     import re
     from math import sqrt
-    eigvals = [ 0.0 for i in range(nat*3) ]
-    eigvecs = [ 0.0 for i in range(nat*3) ]
-    norms   = [ 0.0 for i in range(nat*3) ]
-    pos     = [ 0.0 for i in range(nat) ]
+    eigvals    =  [ 0.0 for i in range(nat*3) ]
+    eigvecs    =  [ 0.0 for i in range(nat*3) ]
+    norms      =  [ 0.0 for i in range(nat*3) ]
+    activity   =  [ '' for i in range(nat*3) ]
+    atom_number = [ 0 for i in range(nat) ]
+    pos        =  [ 0.0 for i in range(nat) ]
     #
     outcar_fh.seek(0) # just in case
     while True:
@@ -69,8 +71,9 @@ def get_modes_from_OUTCAR(outcar_fh, nat):
             #
             for i in range(nat*3): # all frequencies should be supplied, regardless of those requested to calculate
                 outcar_fh.readline() # empty line
-                p = re.search(r'^\s*(\d+).+?([\.\d]+) cm-1', outcar_fh.readline())
+                p = re.search(r'^\s*(\d+).+?([\.\d]+) cm-1 (\w)', outcar_fh.readline())
                 eigvals[i] = float(p.group(2))
+                activity[i] = p.group(3)
                 #
                 outcar_fh.readline() # X         Y         Z           dx          dy          dz
                 eigvec = []
@@ -85,7 +88,7 @@ def get_modes_from_OUTCAR(outcar_fh, nat):
                 eigvecs[i] = eigvec
                 norms[i] = sqrt( sum( [abs(x)**2 for sublist in eigvec for x in sublist] ) )
             #
-            return pos, eigvals, eigvecs, norms
+            return pos, eigvals, activity, eigvecs, norms
         #
     print "[get_modes_from_OUTCAR]: ERROR Couldn't find 'Eigenvectors after division by SQRT(mass)' in OUTCAR. Use 'NWRITE=3' in INCAR. Exiting..."
     sys.exit(1)
@@ -101,21 +104,20 @@ def parse_outcar(outcar_fn):
         if not line:
             break
 
-        if "COMPONENT    ALPHA        EPSILON       CHI(1)" in line:
-            
-                eps[0][0] = float(outcar_fh.readline()[21:42])
-                eps[0][1] = float(outcar_fh.readline()[21:42])
-                eps[0][2] = float(outcar_fh.readline()[21:42])
-                eps[1][1] = float(outcar_fh.readline()[21:42])
-                eps[1][2] = float(outcar_fh.readline()[21:42])
-                eps[2][2] = float(outcar_fh.readline()[21:42])
-                eps[2][0] = eps[0][2]
-                eps[1][0] = eps[0][1]
-                eps[2][1] = eps[1][2]
-                return eps
+        if "COMPONENT    ALPHA        EPSILON       CHI(1)" in line: # geeeeeez
+            eps[0][0] = float(outcar_fh.readline()[21:42])
+            eps[0][1] = float(outcar_fh.readline()[21:42])
+            eps[0][2] = float(outcar_fh.readline()[21:42])
+            eps[1][1] = float(outcar_fh.readline()[21:42])
+            eps[1][2] = float(outcar_fh.readline()[21:42])
+            eps[2][2] = float(outcar_fh.readline()[21:42])
+            eps[2][0] = eps[0][2]
+            eps[1][0] = eps[0][1]
+            eps[2][1] = eps[1][2]
+            return eps
     #
     # no eps - no next mode
-    print "Couldn't find dielectric tensor in "+outcar_fn+", exiting..."
+    print "[parse_outcar]: ERROR Couldn't find dielectric tensor in "+outcar_fn+", exiting..."
     sys.exit(1)
 
 if __name__ == '__main__':
@@ -182,7 +184,7 @@ if __name__ == '__main__':
         print "[__main__]: ERROR Couldn't open OUTCAR.phon, exiting...\n"
         sys.exit(1)
     #
-    pos, eigvals, eigvecs, norms = get_modes_from_OUTCAR(outcar_fh, nat)
+    pos, eigvals, activity, eigvecs, norms = get_modes_from_OUTCAR(outcar_fh, nat)
     outcar_fh.close()
 
     output_fh = open('crystal_raman.dat', 'w')
@@ -195,6 +197,10 @@ if __name__ == '__main__':
         print ""
         print "[__main__]: Mode #%i: frequency %10.7f cm-1; norm: %10.7f" % ( i+1, eigval, norm )
         #
+        if activity[i] != 'A':
+            print "[__main__]: Mode inactive, skipping..."
+            continue
+        #
         ra = [[0.0 for x in range(3)] for y in range(3)]
         for j in range(len(disps)):
             disp_filename = 'OUTCAR.%04d.%+d.out' % (i+1, disps[j])
@@ -205,7 +211,7 @@ if __name__ == '__main__':
             except IOError:
                 print "[__main__]: File "+disp_filename+" not found, preparing displaced POSCAR"
                 poscar_fh = open('fort34.in', 'w')
-                poscar_fh.write("\n".join(fort34_header))
+                poscar_fh.write("".join(fort34_header))
                 #
                 for k in range(nat):
                     pos_disp = [ pos[k][l] + eigvec[k][l]*step_size*disps[j]/norm for l in range(3)]
