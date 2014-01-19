@@ -71,7 +71,7 @@ def get_modes_from_OUTCAR(outcar_fh, nat):
             #
             for i in range(nat*3): # all frequencies should be supplied, regardless of those requested to calculate
                 outcar_fh.readline() # empty line
-                p = re.search(r'^\s*(\d+).+?([\.\d]+) cm-1 (\w)', outcar_fh.readline())
+                p = re.search(r'^\s*(\d+).+?([-\.\d]+) cm-1 (\w)', outcar_fh.readline())
                 eigvals[i] = float(p.group(2))
                 activity[i] = p.group(3)
                 #
@@ -80,30 +80,32 @@ def get_modes_from_OUTCAR(outcar_fh, nat):
                 #
                 for j in range(nat):
                     tmp = outcar_fh.readline().split()
-                    if tmp[-1] == 0: continue # in asymmetric unit or not
-                    if i == 0: pos[j] = [ float(tmp[x]) for x in range(3) ] # get atomic positions only once
+                    if tmp[-1] == 0: continue # NOT in the asymmetric unit
                     #
-                    eigvec.append([ float(tmp[x]) for x in range(3,6) ])
+                    if i == 0: # get atomic positions only once
+                        pos[j] = [ float(tmp[x]) for x in range(1,4) ]
+                        atom_number[j] = int(tmp[0])
+                    #
+                    eigvec.append([ float(tmp[x]) for x in range(4,7) ])
                     #
                 eigvecs[i] = eigvec
                 norms[i] = sqrt( sum( [abs(x)**2 for sublist in eigvec for x in sublist] ) )
             #
-            return pos, eigvals, activity, eigvecs, norms
+            return pos, atom_number, eigvals, activity, eigvecs, norms
         #
-    print "[get_modes_from_OUTCAR]: ERROR Couldn't find 'Eigenvectors after division by SQRT(mass)' in OUTCAR. Use 'NWRITE=3' in INCAR. Exiting..."
+    print "[get_modes_from_OUTCAR]: ERROR Couldn't find 'Eigenvectors after division by SQRT(mass)' in OUTCAR, exiting..."
     sys.exit(1)
 #
-def parse_outcar(outcar_fn):
-    import re
-    import sys
+def get_epsilon_from_OUTCAR(outcar_fh):
+    #
     eps = [[0.0 for i in range(3)] for j in range(3)]
-
-    outcar_fh = open(outcar_fn, 'r')
+    #
+    outcar_fh.seek(0) # just in case
     while True:
         line = outcar_fh.readline()
         if not line:
             break
-
+        #
         if "COMPONENT    ALPHA        EPSILON       CHI(1)" in line: # geeeeeez
             eps[0][0] = float(outcar_fh.readline()[21:42])
             eps[0][1] = float(outcar_fh.readline()[21:42])
@@ -117,9 +119,9 @@ def parse_outcar(outcar_fn):
             return eps
     #
     # no eps - no next mode
-    print "[parse_outcar]: ERROR Couldn't find dielectric tensor in "+outcar_fn+", exiting..."
-    sys.exit(1)
-
+    raise RuntimeError("[get_epsilon_from_OUTCAR]: ERROR Couldn't find dielectric tensor in OUTCAR")
+    return 1
+#
 if __name__ == '__main__':
     import sys
     from math import pi
@@ -184,7 +186,7 @@ if __name__ == '__main__':
         print "[__main__]: ERROR Couldn't open OUTCAR.phon, exiting...\n"
         sys.exit(1)
     #
-    pos, eigvals, activity, eigvecs, norms = get_modes_from_OUTCAR(outcar_fh, nat)
+    pos, atom_number, eigvals, activity, eigvecs, norms = get_modes_from_OUTCAR(outcar_fh, nat)
     outcar_fh.close()
 
     output_fh = open('crystal_raman.dat', 'w')
@@ -209,13 +211,13 @@ if __name__ == '__main__':
                 outcar_fh = open(disp_filename, 'r')
                 print "[__main__]: File "+disp_filename+" exists, parsing..."
             except IOError:
-                print "[__main__]: File "+disp_filename+" not found, preparing displaced POSCAR"
-                poscar_fh = open('fort34.in', 'w')
+                print "[__main__]: File "+disp_filename+" not found, preparing displaced INCAR.gui"
+                poscar_fh = open('INCAR.gui', 'w')
                 poscar_fh.write("".join(fort34_header))
                 #
-                for k in range(nat):
+                for k in range(nat): # do the deed
                     pos_disp = [ pos[k][l] + eigvec[k][l]*step_size*disps[j]/norm for l in range(3)]
-                    poscar_fh.write( "%15.10f %15.10f %15.10f\n" % (pos_disp[0], pos_disp[1], pos_disp[2]) )
+                    poscar_fh.write( "%3d %15.10f %15.10f %15.10f\n" % (atom_number[k], pos_disp[0], pos_disp[1], pos_disp[2]) )
                     #print '%10.6f %10.6f %10.6f %10.6f %10.6f %10.6f' % (pos[k][0], pos[k][1], pos[k][2], dis[k][0], dis[k][1], dis[k][2])
                 poscar_fh.close()
                 #

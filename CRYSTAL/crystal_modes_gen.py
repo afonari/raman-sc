@@ -165,7 +165,7 @@ def dump_OUTCAR_phon(outcar_fh, nat, pos, asym, atom_number, freqs, mode_activit
         for j in range(nat):
             a = int(asym[j])
             b = atom_number[j]
-            outcar_fh.write("%d %10.6f  %10.6f  %10.6f    %10.6f  %10.6f  %10.6f %d\n" % (b, pos[j][0], pos[j][1], pos[j][1], evec[3*j], evec[3*j+1], evec[3*j+2], a))
+            outcar_fh.write("%d %10.6f  %10.6f  %10.6f    %10.6f  %10.6f  %10.6f %d\n" % (b, pos[j][0], pos[j][1], pos[j][2], evec[3*j], evec[3*j+1], evec[3*j+2], a))
 #
 def parse_OUTCAR(outcar_fh):
     import sys
