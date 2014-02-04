@@ -3,7 +3,9 @@
 # Raman off-resonant activity calculator
 # using VASP as a back-end.
 #
-# Contributors: Alexandr Fonari (Georgia Tech)
+# Contributors: Alexandr Fonari  (Georgia Tech)
+#               Shannon Stauffer (UT Austin)
+#
 # MIT license, 2013
 #
 def parse_poscar_header(inp_fh):
@@ -134,17 +136,18 @@ if __name__ == '__main__':
     print "    Raman off-resonant activity calculator,"
     print "    using VASP as a back-end."
     print ""
-    print "    Contributors: Alexandr Fonari (Georgia Tech)"
+    print "    Contributors: Alexandr Fonari  (Georgia Tech)"
+    print "                  Shannon Stauffer (UT Austin)"
     print "    MIT License, 2013"
-    print "    URL: http://..."
+    print "    URL: http://raman-sc.github.io"
     print "    Started at: "+datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
     print ""
     #
-    description  = "Set environment variables:\n"
+    description  = "Before run, set environment variables:\n"
     description += "    VASP_RAMAN_RUN='mpirun vasp'\n"
-    description += "    VASP_RAMAN_PARAMS='[first-mode] [last-mode] [nderiv] [step-size]'\n\n"
-    description += "One-liner bash is:\n"
-    description += "VASP_RAMAN_RUN='mpirun vasp' VASP_RAMAN_PARAMS='1 2 2 0.01' python vasp_raman.py -h"
+    description += "    VASP_RAMAN_PARAMS='[first-mode]_[last-mode]_[nderiv]_[step-size]'\n\n"
+    description += "bash one-liner is:\n"
+    description += "VASP_RAMAN_RUN='mpirun vasp' VASP_RAMAN_PARAMS='1_2_2_0.01' python vasp_raman.py"
     #
     parser = optparse.OptionParser(description=description)
     parser.add_option('-g', '--gen', help='Generate POSCAR only', action='store_true')
@@ -267,4 +270,5 @@ if __name__ == '__main__':
         print "! %4i  freq: %10.5f  alpha: %10.7f  beta2: %10.7f  activity: %10.7f " % (i+1, eigval, alpha, beta2, 45.0*alpha**2 + 7.0*beta2)
         output_fh.write("%i  %10.5f  %10.7f  %10.7f  %10.7f\n" % (i+1, eigval, alpha, beta2, 45.0*alpha**2 + 7.0*beta2))
         output_fh.flush()
+    #
     output_fh.close()
