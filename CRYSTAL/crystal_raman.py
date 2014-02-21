@@ -13,8 +13,7 @@ def parse_fort34_header(fort34_fh):
     #
     fort34_fh.seek(0) # just in case
     #
-    N = 10 # header lines number
-    header = [fort34_fh.next() for x in range(N)]
+    header = [fort34_fh.next() for x in range(5)] # read first 5 lines
     #
     vol = 0.0
     b = []
@@ -25,14 +24,16 @@ def parse_fort34_header(fort34_fh):
     vol = b[0][0]*b[1][1]*b[2][2] + b[1][0]*b[2][1]*b[0][2] + b[2][0]*b[0][1]*b[1][2] - \
           b[0][2]*b[1][1]*b[2][0] - b[2][1]*b[1][2]*b[0][0] - b[2][2]*b[0][1]*b[1][0]
     #
-    num_symm = int(header[4]) # number of symmetry operators
-    if num_symm != 1:
-        print "[parse_fort34]: Number of symmetry operations should be 1 (line 5 in GUI file), exiting..."
-        sys.exit(1)
+    symm_ops = int(header[-1])
+    print "[parse_fort34_header]: Number of symmetry operations: %d" % symm_ops
+    header.extend( [fort34_fh.next() for x in range(symm_ops*4)] )# each symm_op has 4 lines
     #
-    nat = int(header[9]) # number of irreducible atoms in the primitive cell
+    header.extend( [fort34_fh.next()] ) # nat
     #
-    return nat, vol, header
+    nat_asym, nat_tot = [int(x) for x in header[-1].split()] # number of the irreducible atoms and total number of atoms in the primitive cell
+    header[-1] = " %d\n" % nat_asym                          # I know, dirty hack
+    #
+    return nat_tot, vol, header
 #
 def parse_env_params(params):
     import sys
@@ -56,6 +57,7 @@ def get_modes_from_OUTCAR(outcar_fh, nat):
     activity   =  [ '' for i in range(nat*3) ]
     atom_number = [ 0 for i in range(nat) ]
     pos        =  [ 0.0 for i in range(nat) ]
+    asym        = [ 0.0 for i in range(nat) ]
     #
     outcar_fh.seek(0) # just in case
     while True:
@@ -80,22 +82,43 @@ def get_modes_from_OUTCAR(outcar_fh, nat):
                 #
                 for j in range(nat):
                     tmp = outcar_fh.readline().split()
-                    if tmp[-1] == 0: continue # NOT in the asymmetric unit
                     #
                     if i == 0: # get atomic positions only once
-                        pos[j] = [ float(tmp[x]) for x in range(1,4) ]
                         atom_number[j] = int(tmp[0])
+                        pos[j]         = [ float(tmp[x]) for x in range(1,4) ]
+                        asym[j]        = int(tmp[-1]) # is this atom in the asymmetric unit
                     #
                     eigvec.append([ float(tmp[x]) for x in range(4,7) ])
                     #
                 eigvecs[i] = eigvec
                 norms[i] = sqrt( sum( [abs(x)**2 for sublist in eigvec for x in sublist] ) )
             #
-            return pos, atom_number, eigvals, activity, eigvecs, norms
+            return pos, asym, atom_number, eigvals, activity, eigvecs, norms
         #
     print "[get_modes_from_OUTCAR]: ERROR Couldn't find 'Eigenvectors after division by SQRT(mass)' in OUTCAR, exiting..."
     sys.exit(1)
 #
+###########################################
+class switch(object):
+    def __init__(self, value):
+        self.value = value
+        self.fall = False
+
+    def __iter__(self):
+        """Return the match method once, then stop"""
+        yield self.match
+        raise StopIteration
+    
+    def match(self, *args):
+        """Indicate whether or not to enter a case suite"""
+        if self.fall or not args:
+            return True
+        elif self.value in args: # changed for v1.5, see below
+            self.fall = True
+            return True
+        else:
+            return False
+###########################################
 def get_epsilon_from_OUTCAR(outcar_fh):
     #
     eps = [[0.0 for i in range(3)] for j in range(3)]
@@ -107,16 +130,38 @@ def get_epsilon_from_OUTCAR(outcar_fh):
             break
         #
         if "COMPONENT    ALPHA        EPSILON       CHI(1)" in line: # geeeeeez
-            eps[0][0] = float(outcar_fh.readline()[21:42])
-            eps[0][1] = float(outcar_fh.readline()[21:42])
-            eps[0][2] = float(outcar_fh.readline()[21:42])
-            eps[1][1] = float(outcar_fh.readline()[21:42])
-            eps[1][2] = float(outcar_fh.readline()[21:42])
-            eps[2][2] = float(outcar_fh.readline()[21:42])
-            eps[2][0] = eps[0][2]
-            eps[1][0] = eps[0][1]
-            eps[2][1] = eps[1][2]
+            while True:
+                line = outcar_fh.readline().strip()
+                if not line: # empty line
+                    break
+                #
+                direction, alpha, eps1, chi = line.split()
+                for case in switch(direction.strip()):
+                    if case('XX'):
+                        eps[0][0] = float(eps1)
+                        break
+                    if case('XY'):
+                        eps[0][1]= float(eps1)
+                        break
+                    if case('XZ'):
+                        eps[0][2]= float(eps1)
+                        break
+                    if case('YY'):
+                        eps[1][1]= float(eps1)
+                        break
+                    if case('YZ'):
+                        eps[1][2]= float(eps1)
+                        break
+                    if case('ZZ'):
+                        eps[2][2]= float(eps1)
+                        break
+                #
+                #eps[2][0] = eps[0][2]
+                #eps[1][0] = eps[0][1]
+                #eps[2][1] = eps[1][2]
+            #
             return eps
+            break # while True
     #
     # no eps - no next mode
     raise RuntimeError("[get_epsilon_from_OUTCAR]: ERROR Couldn't find dielectric tensor in OUTCAR")
@@ -186,9 +231,9 @@ if __name__ == '__main__':
         print "[__main__]: ERROR Couldn't open OUTCAR.phon, exiting...\n"
         sys.exit(1)
     #
-    pos, atom_number, eigvals, activity, eigvecs, norms = get_modes_from_OUTCAR(outcar_fh, nat)
+    pos, asym, atom_number, eigvals, activity, eigvecs, norms = get_modes_from_OUTCAR(outcar_fh, nat)
     outcar_fh.close()
-
+    #
     output_fh = open('crystal_raman.dat', 'w')
     output_fh.write("# mode    freq(cm-1)    alpha    beta2    activity\n")
     for i in range(first-1, last):
@@ -216,6 +261,8 @@ if __name__ == '__main__':
                 poscar_fh.write("".join(fort34_header))
                 #
                 for k in range(nat): # do the deed
+                    if asym[k] == 0: continue # this atom is NOT in the asymmetric unit, skip!
+                    #
                     pos_disp = [ pos[k][l] + eigvec[k][l]*step_size*disps[j]/norm for l in range(3)]
                     poscar_fh.write( "%3d %15.10f %15.10f %15.10f\n" % (atom_number[k], pos_disp[0], pos_disp[1], pos_disp[2]) )
                     #print '%10.6f %10.6f %10.6f %10.6f %10.6f %10.6f' % (pos[k][0], pos[k][1], pos[k][2], dis[k][0], dis[k][1], dis[k][2])
@@ -254,102 +301,5 @@ if __name__ == '__main__':
         output_fh.flush()
     #
     output_fh.close()
-#    #
-#    # 2nd: open fort34 file
-#    try:
-#        fort34_fn = sys.argv[1]
-#        fort34_fh = open(fort34_fn, 'r')
-#    except IndexError:
-#        print "Run code as:\n"
-#        print "    CRYSTAL-Raman.py fort34.in\n"
-#        sys.exit("No argument found, exiting...\n")
-#    except IOError:
-#        sys.exit("Couldn't open "+fort34_fn+" file, exiting...\n")
-#    #
-#    # 3rd: everything else
-#    print "Parsing "+fort34_fn+"...\n"
-#    first, last, nderiv, step_size, input_fn, modes_fn, am_fn, nat, vol, pos, atomic_numbers, fort34_header = parse_fort34(fort34_fh)
-#    #
-#    eig_fh = open(modes_fn, 'r')
-#    #
-#    if nderiv == 2:
-#        disps = [-1, 1]
-#        coeffs = [-0.5, 0.5]
-#    else:
-#        print "Unknown value for NDERIV (use 2), exiting..."
-#        sys.exit(0)
-#    #
-#    try:
-#        active_modes = [line.strip() for line in open(am_fn, 'r')]
-#    except IOError:
-#        sys.exit("Couldn't open "+am_fn+" file, exiting...\n")
-#    #
-#    print "Number of ions: %i, volume: %7.5f A^3" % (nat, vol)
-#    print "Modes to be computed: %i - %i" % (first, last)
-#    print "Derivation number and step size (A): %i, %7.5f" % (nderiv, step_size)
-#    print "Input filename: %s" % input_fn
-#    print "Modes filename: %s" % modes_fn
-#    print "Active modes filename: %s" % am_fn
-#    print "CRYSTAL invoke command: %s" % CRYSTAL_RUN 
-#    print ""
-#    #
-#    OUT_FN=input_fn+'.out'
-#    GUI_FN=input_fn+'.gui'
-#    #
-#    eigvals, eigvecs, norms = read_qe_dynmat(eig_fh, nat)
-#    #
-#    for i in range(first-1, last):
-#        eigval = eigvals[i]
-#        eigvec = eigvecs[i]
-#        norm = norms[i]
-#    
-#        print "Mode #: %i, frequency: %10.7f cm-1, norm: %10.7f" % ( i+1, eigval, norm )
-#        if active_modes[i] == 'I':
-#            print "Mode #: %i - raman inactive, skipping..." % (i+1)
-#            continue
-#
-#        ra = [[0.0 for x in range(3)] for y in range(3)]
-#        for j in range(len(disps)):
-#            disp_filename = 'OUTCAR.%04d.%+d.out' % (i+1, disps[j])
-#            #
-#            try:
-#                with open(disp_filename, 'r'):
-#                    file_exists =True
-#                    pass
-#            except IOError:
-#                file_exists=False
-#            #
-#            if file_exists:
-#                print "File "+disp_filename+" exists, parsing..."
-#            else:
-#                print "File "+disp_filename+" not found, running CRYSTAL...\n"
-#                gui_fh = open(GUI_FN, 'w')
-#                gui_fh.write(fort34_header)
-#                #
-#                for k in range(nat):
-#                    pos_disp = [ pos[k][l] + eigvec[k][l]*step_size*disps[j]/norm for l in range(3)]
-#                    gui_fh.write( '%5d     %15.12f     %15.12f     %15.12f\n' % (atomic_numbers[k], pos_disp[0], pos_disp[1], pos_disp[2]) )
-#                    #print '%10.6f %10.6f %10.6f %10.6f %10.6f %10.6f' % (pos[k][0], pos[k][1], pos[k][2], dis[k][0], dis[k][1], dis[k][2])
-#                gui_fh.close()
-#                #
-#                #run CRYSTAL here
-#                os.system(CRYSTAL_RUN)
-#                #
-#                try:
-#                    move(OUT_FN, disp_filename)
-#                except IOError:
-#                    sys.exit("Couldn't open "+OUT_FN+" file, exiting...\n")
-#            #
-#            print "Parsing "+disp_filename+"...\n"
-#            eps = parse_outcar(disp_filename)
-#            print "Found eps in "+disp_filename+":"
-#            print eps
-#            #
-#            for m in range(3):
-#                for n in range(3):
-#                    ra[m][n]   += eps[m][n] * coeffs[j]/step_size * norm * vol/(4.0*pi)
-#            #units: A^2/amu^1/2 =         dimless   * 1/A         * 1/amu^1/2  * A^3
-#        #
-#        alpha = (ra[0][0] + ra[1][1] + ra[2][2])/3.0
-#        beta2 = ( (ra[0][0] - ra[1][1])**2 + (ra[0][0] - ra[2][2])**2 + (ra[1][1] - ra[2][2])**2 + 6.0 * (ra[0][1]**2 + ra[0][2]**2 + ra[1][2]**2) )/2.0
-#        print 'for mode %i: %10.5f cm-1; alpha: %10.7f ; beta2: %10.7f ; activity: %10.7f ' % (i+1, eigval, alpha, beta2, 45.0*alpha**2 + 7.0*beta2)
+    sys.exit(0)
+    # done.
