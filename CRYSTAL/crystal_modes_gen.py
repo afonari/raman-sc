@@ -140,8 +140,8 @@ def get_modes_from_HESSFREQ(hessfreq_fh, nat, masses):
         #
         freqs.append(freq * AU_CMM1)
     #
-    for i in range(nat*3):
-        eigvecs[i] = [x/sqrt(masses[i//3]) for x in eigvecs[i]]
+    #for i in range(nat*3):
+    #    eigvecs[i] = [x/sqrt(masses[i//3]) for x in eigvecs[i]]
     #
     return freqs, eigvecs
 #

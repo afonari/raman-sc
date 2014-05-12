@@ -1,0 +1,351 @@
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p9696_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p9696_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p9696_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p10214_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p10214_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p10214_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p10377_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p10377_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p10377_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p10436_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p10436_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p10436_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p10524_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p10524_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p10524_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p10965_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p10965_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p10965_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p11168_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p11168_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p11168_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p11227_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p11227_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p11227_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p11285_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p11285_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p11285_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p11343_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p11343_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p11343_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p11402_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p11402_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p11402_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p11460_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p11460_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p11460_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p12231_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p12231_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p12231_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p13798_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p13798_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p13798_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p15350_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p15350_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p15350_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p15620_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p15620_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p15620_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p15678_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p15678_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p15678_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p15736_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p15736_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p15736_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p15794_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p15794_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p15794_afonari from each node
+output data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.out
+Pcrystal executable in /u/afonari/CRYSTAL09/bin/Linux-ifort-11.1_amd64/v1_0_1
+input data in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.d12
+creating temporary directories /u/afonari/work/crystal_scratch/tmp_p15853_afonari on each node
+copying Pcrystal executable on each node
+copying input file on each node
+external geometry input from /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+external geometry input saved in /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR_inp.gui
+Pcrystal job running in /u/afonari/work/crystal_scratch/tmp_p15853_afonari on each node ...
+wave function binary file /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f9
+file fort.98 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.f98
+geometry input file fort.34 saved as /u/afonari/data/CPD/CRYSTAL-Raman-test/Modes_11_20_2_0.01/INCAR.gui
+removing temporary directories /u/afonari/work/crystal_scratch/tmp_p15853_afonari from each node
+
+    Raman off-resonant activity calculator,
+    using CRYSTAL as a back-end.
+
+    Contributors: Alexandr Fonari (Georgia Tech)
+    MIT License, 2013
+    URL: http://...
+    Started at: 2014-01-19 12:28
+
+[__main__]: CRYSTAL_RAMAN_RUN='runmpi09 INCAR'
+[__main__]: CRYSTAL_RAMAN_PARAMS='11_20_2_0.01'
+
+[__main__]: Mode #11: frequency 808.8669420 cm-1; norm:  0.2886750
+[__main__]: File OUTCAR.0011.-1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+[__main__]: File OUTCAR.0011.+1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+
+!   11  freq:  808.86694  alpha: -0.0765734  beta2:  0.0527714  activity:  0.6332567 
+
+[__main__]: Mode #12: frequency 811.6113080 cm-1; norm:  0.2886749
+[__main__]: File OUTCAR.0012.-1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+[__main__]: File OUTCAR.0012.+1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+
+!   12  freq:  811.61131  alpha: -0.1148601  beta2:  0.0395785  activity:  0.8707277 
+
+[__main__]: Mode #13: frequency 897.1676410 cm-1; norm:  0.2886747
+[__main__]: File OUTCAR.0013.-1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+[__main__]: File OUTCAR.0013.+1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+
+!   13  freq:  897.16764  alpha:  0.0000000  beta2:  0.6332555  activity:  4.4327884 
+
+[__main__]: Mode #14: frequency 912.9002320 cm-1; norm:  0.2886760
+[__main__]: File OUTCAR.0014.-1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+[__main__]: File OUTCAR.0014.+1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+
+!   14  freq:  912.90023  alpha:  0.0000000  beta2:  0.5145246  activity:  3.6016719 
+
+[__main__]: Mode #15: frequency 920.4462740 cm-1; norm:  0.2886750
+[__main__]: File OUTCAR.0015.-1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+[__main__]: File OUTCAR.0015.+1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+
+!   15  freq:  920.44627  alpha:  0.0000000  beta2:  0.3562070  activity:  2.4934492 
+
+[__main__]: Mode #16: frequency 937.7748940 cm-1; norm:  0.9961226
+[__main__]: File OUTCAR.0016.-1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+[__main__]: File OUTCAR.0016.+1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+
+!   16  freq:  937.77489  alpha:  0.0000000  beta2:  1.8850683  activity: 13.1954780 
+
+[__main__]: Mode #17: frequency 962.0812360 cm-1; norm:  0.9961228
+[__main__]: File OUTCAR.0017.-1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+[__main__]: File OUTCAR.0017.+1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+
+!   17  freq:  962.08124  alpha:  0.0000000  beta2:  1.8850691  activity: 13.1954834 
+
+[__main__]: Mode #18: frequency 1005.7910910 cm-1; norm:  0.9961228
+[__main__]: File OUTCAR.0018.-1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+[__main__]: File OUTCAR.0018.+1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+
+!   18  freq: 1005.79109  alpha:  0.2642298  beta2:  1.0996238  activity: 10.8391485 
+
+[__main__]: Mode #19: frequency 1074.3466590 cm-1; norm:  0.9961227
+[__main__]: File OUTCAR.0019.-1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+[__main__]: File OUTCAR.0019.+1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+
+!   19  freq: 1074.34666  alpha:  0.0000000  beta2:  4.2414045  activity: 29.6898317 
+
+[__main__]: Mode #20: frequency 1087.2607190 cm-1; norm:  0.9961230
+[__main__]: File OUTCAR.0020.-1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+[__main__]: File OUTCAR.0020.+1.out not found, preparing displaced INCAR.gui
+[__main__]: Running CRYSTAL...
+
+!   20  freq: 1087.26072  alpha:  0.0000000  beta2:  1.8850697  activity: 13.1954882 

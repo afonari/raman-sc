@@ -1,0 +1,15 @@
+#!/bin/bash
+#PBS -l select=10:ncpus=32:mpiprocs=32
+#PBS -l walltime=01:00:00
+#PBS -q debug
+#PBS -j oe
+#PBS -N CPD
+#PBS -V
+
+cd $PBS_O_WORKDIR
+
+source /u/afonari/CRYSTAL09/utils09/cry2k9.bashrc
+
+
+python /u/afonari/crystal_raman.py > crystal_raman.out
+
