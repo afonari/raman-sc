@@ -108,7 +108,8 @@ program hessfreq_read
 !
     write(*,*) 'Writing frequencies and eigenvectors to dynmat.eig file...'
     open(unit=15,file='dynmat.eig',status='UNKNOWN',form='formatted',ERR=1002, POSITION="REWIND")
-    call write_eigenvectors(nat, (/ ZERO, ZERO, ZERO /), w2, fc, 15)
+    !call write_eigenvectors(nat, (/ ZERO, ZERO, ZERO /), w2, fc, 15)
+    call writemodes(nat, w2, fc, 15)
     close(15)
 !!!!!!!!!!!!!!!!!!!!!!!!!
     !
